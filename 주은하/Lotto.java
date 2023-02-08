@@ -16,31 +16,32 @@ public class Lotto {
         System.out.print("로또 번호를 입력해 주세요.");
         Scanner sc = new Scanner(System.in);
         HashSet<Integer> myNum = new HashSet<>();
-        while(true) {
+        while (true) {
+            //값 입력 받음
             int num = sc.nextInt();
-            //중복 방지
+
+            //1~45 입력
+            if (num < 0 || num > 45) {
+                System.out.println("1~45 사이의 번호를 입력해 주세요.");
+            } else {
+                //중복 알려주기
                 for (int n : myNum) {
                     if (n == num) {
                         System.out.println("중복된 번호를 입력하였습니다.");
-                    } else {
-                        myNum.add(num);
                     }
                 }
-                //1~45 입력
-            if(num < 0 || num > 45) {
-                System.out.println("중복된 번호를 입력하였습니다.");
-            }else {
                 myNum.add(num);
             }
-
-            if(myNum.size()==6) {
+            if (myNum.size() == 6) {
                 break;
             }
         }
+        System.out.println("당첨 번호 : " + lottoNum);
+        System.out.println("입력 번호 : " + myNum);
+
         //로또번호 비교
-        System.out.println("당첨 번호 : "+lottoNum);
         lottoNum.addAll(myNum);
-        int result = 12-lottoNum.size();
-        System.out.println("맞은 개수는 "+result+"개 입니다.");
+        int result = 12 - lottoNum.size();
+        System.out.println("맞은 개수는 " + result + "개 입니다.");
     }
 }
