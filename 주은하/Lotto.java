@@ -1,14 +1,16 @@
 package 주은하;
 
+import java.io.*;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Lotto {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //로또번호 생성
         Random random = new Random();
-        HashSet<Integer> lottoNum = new HashSet<>();
+        Set<Integer> lottoNum = new HashSet<>();
         for (int i = 0; i < 6; i++) {
             lottoNum.add(random.nextInt(45) + 1);
         }
@@ -42,6 +44,11 @@ public class Lotto {
         //로또번호 비교
         lottoNum.addAll(myNum);
         int result = 12 - lottoNum.size();
-        System.out.println("맞은 개수는 " + result + "개 입니다.");
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
+        sb.append("맞은 개수는 " + result + "개 입니다.");
+        bw.write(String.valueOf(sb));
+        bw.flush();
+        bw.close();
     }
 }

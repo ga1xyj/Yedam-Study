@@ -16,8 +16,8 @@ public class GradeOutput {
             System.out.println("성적을 입력해 주세요.");
             int mySco = sc.nextInt();
             Grade grade = new Grade();
-            grade.subject = mySub;
-            grade.score = mySco;
+            grade.setSubject(mySub);
+            grade.setScore(mySco);
             grades.add(grade);
 
             System.out.println("성적을 산출하려면 0, 더 입력하려면 1을 입력하세요.");
@@ -33,23 +33,24 @@ public class GradeOutput {
         int sum = 0;
         int avg;
         for(Grade grade : grades) {
-            if(grade.score < 30) {
-                System.out.println(grade.subject + " : F");
-            }else if(grade.score < 60){
-                System.out.println(grade.subject + " : D");
-            }else if(grade.score < 80){
-                System.out.println(grade.subject + " : C");
-            }else if(grade.score < 95){
-                System.out.println(grade.subject + " : B");
+            if(grade.getScore() < 30) {
+                System.out.println(grade.getSubject() + " : F");
+            }else if(grade.getScore() < 60){
+                System.out.println(grade.getSubject() + " : D");
+            }else if(grade.getScore() < 80){
+                System.out.println(grade.getSubject() + " : C");
+            }else if(grade.getScore() < 95){
+                System.out.println(grade.getSubject() + " : B");
             }else{
-                System.out.println(grade.subject + " : A");
+                System.out.println(grade.getSubject() + " : A");
             }
-            sum += grade.score;
+            sum += grade.getScore();
         }
         avg = sum / grades.size();
 
         System.out.println("총점 : " + sum);
         System.out.println("평균 : " + avg);
+
 
     }
 }
